@@ -6,15 +6,9 @@
 
 
     <context-param>
-        <param-name>resteasy.resources</param-name>
-        <param-value>org.smop.resteasy.Server</param-value>
+        <param-name>resteasy.scan</param-name>
+        <param-value>true</param-value>
     </context-param>
-
-    <context-param>
-        <param-name>resteasy.providers</param-name>
-        <param-value>org.smop.resteasy.ScalaXmlMessageBodyWriter</param-value>
-    </context-param>
-
 
     <listener>
         <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
