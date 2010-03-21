@@ -28,8 +28,13 @@
 
     <servlet-mapping>
         <servlet-name>Resteasy</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/blah/*</url-pattern>
     </servlet-mapping>
+
+    <context-param>
+      <param-name>resteasy.servlet.mapping.prefix</param-name>
+      <param-value>/blah</param-value>
+   </context-param>
 
     <welcome-file-list>
         <welcome-file>/index.html</welcome-file>
