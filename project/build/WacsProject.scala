@@ -13,5 +13,11 @@ class WacsProject(info: ProjectInfo) extends DefaultWebProject(info) with IdeaPl
   val servlet = "javax.servlet" % "servlet-api" % "2.5" % "provided"
 
   //lazy val subProject = project("subproject", "subproject", new DefaultProject(_) with IdeaPlugin)
-   // ...
+  // ...
+
+  lazy val transformViews = transformViewsAction
+  def transformViewsAction = transformViewsTask describedAs("compiles view XML to Scala")
+  def transformViewsTask = task{ log.info("transforming views."); None }
+
+  override def compileAction = super.compileAction dependsOn(transformViews)
 }
