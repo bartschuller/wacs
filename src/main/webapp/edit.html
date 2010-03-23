@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Edit {entry.name}</title>
+</head>
+<body>
+	{form('/edit/' + entry.id, entry)}
+
+	<form action="{href('/edit/' + entry.id}" method="POST" w:form-bean="entry">
+			<label for="name">Name:</label>
+			<input type="text" name="name" id="name" />
+
+			<label for="amount">Amount:</label>
+			<input type="text" name="amount" id="amount" />
+	</form>
+</body>
+</html>

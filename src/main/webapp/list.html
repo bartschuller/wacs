@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>This is a list of things</title>
+</head>
+<body>
+	<table>
+		<thead><tr><th>Name</th><th/></tr></thead>
+		<tbody>
+			<tr w:repeat="myList" w:var="myEntry"><td>myEntry.name</td><td><a href="{href('/edit/' + myEntry.id)}">edit</a></td></tr>
+			<tr w:replace="myNodeSequence"><td>Sample entry name</td><td><a href="/app/edit/1">edit</a></td></tr>
+			{otherNodeSequence}
+		</tbody>
+	</table>
+</body>
+</html>
