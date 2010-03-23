@@ -15,9 +15,17 @@ class WacsProject(info: ProjectInfo) extends DefaultWebProject(info) with IdeaPl
   //lazy val subProject = project("subproject", "subproject", new DefaultProject(_) with IdeaPlugin)
   // ...
 
+  val viewSourcePath = mainSourcePath / "views"
+  val viewSources = viewSourcePath ** "*.html"
+  val viewScalaPath = "target" / "view-src"
+
   lazy val transformViews = transformViewsAction
   def transformViewsAction = transformViewsTask describedAs("compiles view XML to Scala")
-  def transformViewsTask = task{ log.info("transforming views."); None }
+  def transformViewsTask = fileTask(viewScalaPath from viewSources) {
+    log.info("transforming views.")
+    FileUtilities.createDirectory(viewScalaPath, log)
+    None
+  }
 
   override def compileAction = super.compileAction dependsOn(transformViews)
 }

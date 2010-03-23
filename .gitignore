@@ -4,6 +4,6 @@ project/plugins/project/build.properties
 lib_managed
 project/plugins/lib_managed
 project/plugins/src_managed
-wacs.iml
-wacs.ipr
-wacs.iws
+*.iml
+*.ipr
+*.iws
