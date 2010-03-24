@@ -16,9 +16,10 @@ class WacsProject(info: ProjectInfo) extends DefaultWebProject(info) with IdeaPl
   // ...
 
   val viewSourcePath = mainSourcePath / "views"
-  val viewSources = viewSourcePath ** "*.html"
-  val viewScalaPath = "target" / "view-src"
-
+  val viewSources = (viewSourcePath ##) ** ("*.*" - "*.scala")
+  val viewScalaPath = outputPath / "view-src"
+  val viewScalaSources = viewScalaPath ** viewSources.getPaths.map {"""\.(.*?)$""".r.replaceFirstIn(_, ".scala")}
+  
   lazy val transformViews = transformViewsAction
   def transformViewsAction = transformViewsTask describedAs("compiles view XML to Scala")
   def transformViewsTask = fileTask(viewScalaPath from viewSources) {
